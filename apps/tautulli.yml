@@ -51,13 +51,13 @@
           - '/opt/appdata/{{pgrole}}:/config'
           - '/opt/appdata/plex/database/Library/Application Support/Plex Media Server/Logs:/logs'
           - '/opt/appdata/{{pgrole}}/scripts:/scripts'
+          - '/etc/localtime:/etc/localtime'
 
     - name: 'Setting {{pgrole}} ENV'
       set_fact:
         pg_env:
           PUID: '1000'
-          PGID: '1000'
-          TZ: '${TZ}' 
+          PGID: '1000' 
     # MAIN DEPLOYMENT #############################################################
     - name: 'Deploying {{pgrole}}'
       docker_container:
