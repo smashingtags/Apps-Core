@@ -271,10 +271,11 @@
             aliases:
               - plex
         healthcheck:
-          test: "curl --silent --show-error --fail 'http://localhost:32400/identity' >/dev/null || exit 1"
+          test: "curl --silent --show-error --fail 'http://localhost:32400/' || exit 1"
           interval: '1h'
           timeout: '10s'
           retries: '5'
+          start_period: '20s'
         volumes: '{{default_volumes}}'
         devices: "{{ '/dev/dri:/dev/dri' if dev_dri.stat.exists == True | default(false) else omit }}"
         etc_hosts:
@@ -313,10 +314,11 @@
             aliases:
               - plex
         healthcheck:
-          test: "curl --silent --show-error --fail 'http://localhost:32400/identity' >/dev/null || exit 1"
+          test: "curl --silent --show-error --fail 'http://localhost:32400/' || exit 1"
           interval: '1h'
           timeout: '10s'
           retries: '5'
+          start_period: '20s'
         volumes: '{{default_volumes}}'
         devices: "{{ '/dev/dri:/dev/dri' if dev_dri.stat.exists == True | default(false) else omit }}"
         etc_hosts:
