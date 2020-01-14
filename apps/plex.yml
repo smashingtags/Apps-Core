@@ -271,7 +271,7 @@
             aliases:
               - plex
         healthcheck:
-          test: "curl --silent --show-error --fail 'http://localhost:32400/' || exit 1"
+          test: "curl --fail 'http://localhost:32400/' || exit 1"
           interval: '1h'
           timeout: '10s'
           retries: '5'
@@ -314,7 +314,7 @@
             aliases:
               - plex
         healthcheck:
-          test: "curl --silent --show-error --fail 'http://localhost:32400/' || exit 1"
+          test: "curl --fail 'http://localhost:32400/' || exit 1"
           interval: '1h'
           timeout: '10s'
           retries: '5'
