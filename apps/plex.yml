@@ -270,6 +270,11 @@
           - name: plexguide
             aliases:
               - plex
+        healthcheck:
+          test: "curl --silent --show-error --fail 'http://localhost:32400/identity' >/dev/null || exit 1"
+          interval: '1h'
+          timeout: '10s'
+          retries: '5'
         volumes: '{{default_volumes}}'
         devices: "{{ '/dev/dri:/dev/dri' if dev_dri.stat.exists == True | default(false) else omit }}"
         etc_hosts:
@@ -307,6 +312,11 @@
           - name: plexguide
             aliases:
               - plex
+        healthcheck:
+          test: "curl --silent --show-error --fail 'http://localhost:32400/identity' >/dev/null || exit 1"
+          interval: '1h'
+          timeout: '10s'
+          retries: '5'
         volumes: '{{default_volumes}}'
         devices: "{{ '/dev/dri:/dev/dri' if dev_dri.stat.exists == True | default(false) else omit }}"
         etc_hosts:
