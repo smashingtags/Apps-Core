@@ -66,6 +66,7 @@
           traefik.frontend.headers.contentTypeNosniff: 'true'
           traefik.frontend.headers.customResponseHeaders: 'X-Robots-Tag:noindex,nofollow,nosnippet,noarchive,notranslate,noimageindex'
           traefik.frontend.headers.forceSTSHeader: 'true'
+          autoheal: 'true'
 
     - name: 'Set {{pgrole}} default Volume - {{ extension.stdout }}'
       set_fact:
@@ -242,7 +243,23 @@
       set_fact:
         customConnections: 'none'
       when: customConnections is undefined
-
+    
+    ######################################### AUTOHEAL Container
+    - name: Deploy AUTOHEAL #https://github.com/willfarrell/docker-autoheal
+      docker_container:
+        name: autoheal
+        image: willfarrell/autoheal
+        pull: yes    
+        env:
+          AUTOHEAL_CONTAINER_LABEL: 'true'
+        networks:
+          - name: plexguide
+            aliases:
+              - autoheal
+        volumes: '/var/run/docker.sock:/var/run/docker.sock'
+        restart_policy: always
+        state: started
+        
     ######################################### DEPLOY PLEX REMOTE (ANSWER 2)
     - name: Deploy {{pgrole}} - Container (Remote Edition)
       docker_container:
