@@ -271,10 +271,10 @@
             aliases:
               - plex
         healthcheck:
-          test: "curl --fail 'http://localhost:32400/' || exit 1"
-          interval: '1h'
-          timeout: '10s'
-          retries: '5'
+          test: "curl --silent --show-error --fail 'http://localhost:32400/identity' >/dev/null || exit 1"
+          interval: '5s'
+          timeout: '2s'
+          retries: '20'
           start_period: '20s'
         volumes: '{{default_volumes}}'
         devices: "{{ '/dev/dri:/dev/dri' if dev_dri.stat.exists == True | default(false) else omit }}"
@@ -314,10 +314,10 @@
             aliases:
               - plex
         healthcheck:
-          test: "curl --fail 'http://localhost:32400/' || exit 1"
-          interval: '1h'
-          timeout: '10s'
-          retries: '5'
+          test: "curl --silent --show-error --fail 'http://localhost:32400/identity' >/dev/null || exit 1"
+          interval: '5s'
+          timeout: '2s'
+          retries: '20'
           start_period: '20s'
         volumes: '{{default_volumes}}'
         devices: "{{ '/dev/dri:/dev/dri' if dev_dri.stat.exists == True | default(false) else omit }}"
