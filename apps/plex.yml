@@ -251,7 +251,7 @@
         image: willfarrell/autoheal
         pull: yes    
         env:
-          AUTOHEAL_CONTAINER_LABEL: 'all'
+          AUTOHEAL_CONTAINER_LABEL: 'true'
         networks:
           - name: plexguide
             aliases:
