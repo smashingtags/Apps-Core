@@ -45,12 +45,7 @@
     - name: Register {{pgrole}} Update role
       shell: 'cat /var/plexguide/plex.updaterole'
       register: updateplex
-
-    # CORE (MANDATORY) ############################################################
-    - name: 'Including cron job'
-      include_tasks: '/opt/coreapps/apps/_core.yml'
-
-    ######################################### FOR BOTH
+      ######################################### FOR BOTH
     - name: 'Set Default Labels'
       set_fact:
         default_labels:
