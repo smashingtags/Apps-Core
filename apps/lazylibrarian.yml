@@ -15,7 +15,7 @@
         pgrole: 'lazylibrarian'
         intport: '5299'
         extport: '5299'
-        image: 'linuxserver/lazylibrarian'
+        image: 'thraxis/lazylibrarian-calibre:latest'
 
     # CORE (MANDATORY) ############################################################
     - name: 'Including cron job'
