@@ -1,6 +1,6 @@
-  
+
 #!/bin/bash
-# Title:      autoheal 
+# Title:      autoheal
 # GNU:        General Public License v3.0
 ################################################################################
 ---
@@ -27,7 +27,7 @@
           AUTOHEAL_DEFAULT_STOP_TIMEOUT: '10'
           CURL_TIMEOUT: '30'
           DOCKER_SOCK: '/var/run/docker.sock'
-          
+
     # MAIN DEPLOYMENT #############################################################
     - name: 'Deploying {{pgrole}}'
       docker_container:
