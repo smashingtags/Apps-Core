@@ -258,7 +258,7 @@
     ######################################### DEPLOY PLEX REMOTE (ANSWER 2)
     - name: Deploy {{pgrole}} - Container (Remote Edition)
       docker_container:
-        name: plex
+        name: plex2
         image: '{{image}}'
         pull: yes
         published_ports:
@@ -413,7 +413,7 @@
 
       - name: Stop {{pgrole}} Container
         docker_container:
-          name: plex
+          name: plex2
           state: stopped
         when: ('plex_db_cache_size' in ansible_run_tags)
 
@@ -444,7 +444,7 @@
 
       - name: Start {{pgrole}} Container
         docker_container:
-          name: plex
+          name: plex2
           state: started
         when: ('plex_db_cache_size' in ansible_run_tags)
 
