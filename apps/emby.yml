@@ -57,7 +57,7 @@
         pg_env:
           UID: '1000'
           GID: '1000'
-          GIDLIST: '1000'
+          GIDLIST: '44'
           NVIDIA_VISIBLE_DEVICES: 'all'
           NVIDIA_DRIVER_CAPABILITIES: 'compute,video,utility'
 
@@ -75,7 +75,7 @@
         published_ports:
           - '{{ports.stdout}}{{extport}}:{{intport}}'
           - '{{ports.stdout}}{{extport2}}:{{intport2}}'
-        devices: "{{ '/dev/dri:/dev/dri' if dev_dri.stat.exists == True | default(false) else omit }}"
+        devices: '/dev/dri:dev/dri'
         volumes: '{{pg_volumes}}'
         env: '{{pg_env}}'
         purge_networks: yes
